@@ -7,6 +7,11 @@ RON plugin for IntelliJ IDEs
 ## Features
 
 - Syntax highlighting
+- Folding
+
+### Demo
+
+![demo screen](https://raw.githubusercontent.com/reeFridge/intellij-ron/master/screens/demo.png)
 
 ## Build
 
