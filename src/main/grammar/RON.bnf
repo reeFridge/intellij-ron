@@ -70,12 +70,12 @@ tuple ::= '(' [ value ( ',' value )* [ ',' ] ] ')'
 
 struct ::= tuple_struct | named_struct | unit_struct
 unit_struct ::= 'ident' | ( '(' ')' )
-tuple_struct ::= [ 'ident' ] tuple
-named_struct ::= [ 'ident' ] '(' [ named_field ( ',' named_field )* [ ',' ] ] ')'
-named_field ::= field_ident ':' value
-field_ident ::= 'ident'
+tuple_struct ::= [ ident ] tuple
+named_struct ::= [ ident ] '(' [ named_field ( ',' named_field )* [ ',' ] ] ')'
+named_field ::= ident ':' value
 
 enum_variant ::= enum_variant_tuple | enum_variant_named | enum_variant_unit
-enum_variant_unit ::= 'ident'
-enum_variant_tuple ::= 'ident' tuple
-enum_variant_named ::= 'ident' '(' [ named_field ( ',' named_field )* [ ',' ] ] ')'
+enum_variant_unit ::= ident
+enum_variant_tuple ::= ident tuple
+enum_variant_named ::= ident '(' [ named_field ( ',' named_field )* [ ',' ] ] ')'
+ident ::= 'ident'

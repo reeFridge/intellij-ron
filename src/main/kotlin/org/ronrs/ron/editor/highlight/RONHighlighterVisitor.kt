@@ -12,9 +12,9 @@ import org.ronrs.ron.lang.psi.*
 class RONHighlighterVisitor : RONVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
 
-    override fun visitFieldIdent(element: RONFieldIdent) {
-        highlight(element, RONHighlighter.PROPERTY)
-        super.visitFieldIdent(element)
+    override fun visitNamedField(o: RONNamedField) {
+        highlight(o.ident, RONHighlighter.PROPERTY)
+        super.visitNamedField(o)
     }
 
     private fun highlight(element: PsiElement, attrKey: TextAttributesKey) {
