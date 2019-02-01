@@ -1,0 +1,81 @@
+{
+    parserClass="org.ronrs.ron.lang.parser.RONParser"
+    parserUtilClass="org.ronrs.ron.lang.parser.RONParserUtil"
+
+    elementTypeHolderClass="org.ronrs.ron.lang.psi.RONTypes"
+    elementTypeClass="org.ronrs.ron.lang.psi.RONCompositeElementType"
+    tokenTypeClass="org.ronrs.ron.lang.psi.RONTokenType"
+
+    psiClassPrefix="RON"
+    psiImplClassSuffix="Impl"
+    psiPackage="org.ronrs.ron.lang.psi"
+    psiImplPackage="org.ronrs.ron.lang.psi.impl"
+
+    tokens = [
+        T_LBRACE             = '{'
+        T_RBRACE             = '}'
+        T_LBRACK             = '['
+        T_RBRACK             = ']'
+        T_LPAREN             = '('
+        T_RPAREN             = ')'
+        T_COLON              = ':'
+        T_COMMA              = ','
+        T_MINUS              = '-'
+        T_PLUS               = '+'
+        T_SHARP              = '#'
+        T_EXCLAM             = '!'
+        T_TRUE               = 'true'
+        T_FALSE              = 'false'
+        T_DIGIT              = 'digit'
+        T_FLOAT              = 'float'
+        T_COMMENT            = 'comment'
+        T_STRING_LITERAL     = 'string'
+        T_SOME               = 'some'
+        T_ENABLE             = 'enable'
+        T_IDENT              = 'ident'
+        T_UNWRAP_NEWTYPES    = 'unwrap_newtypes'
+        T_IMPLICIT_SOME      = 'implicit_some'
+    ]
+}
+
+RON ::= [ extensions ] value
+
+extensions ::= ( '#' '!' '[' extensions_inner ']' )+
+extensions_inner ::= 'enable' '(' extension_name ( ',' extension_name )* [ ',' ] ')'
+extension_name ::= 'unwrap_newtypes' | 'implicit_some'
+
+value ::=
+    unsigned
+  | signed
+  | float
+  | string
+  | bool
+  | option
+  | list
+  | map
+  | tuple
+  | struct
+  | enum_variant
+
+unsigned ::= ["0" ("x" | "b" | "o")] 'digit'
+signed ::= [ '+' | '-' ] unsigned
+float ::= [ '+' | '-' ] 'float'
+string ::= 'string'
+bool ::= 'true' | 'false'
+option ::= 'some' '(' value ')'
+list ::= '[' [ value ( ',' value )* [ ',' ] ] ']'
+map ::= '{' [ map_entry ( ',' map_entry )* [ ',' ] ] '}'
+map_entry ::= value ':' value
+tuple ::= '(' [ value ( ',' value )* [ ',' ] ] ')'
+
+struct ::= tuple_struct | named_struct | unit_struct
+unit_struct ::= 'ident' | ( '(' ')' )
+tuple_struct ::= [ 'ident' ] tuple
+named_struct ::= [ 'ident' ] '(' [ named_field ( ',' named_field )* [ ',' ] ] ')'
+named_field ::= 'ident' ':' value
+
+enum_variant ::= enum_variant_tuple | enum_variant_named | enum_variant_unit
+enum_variant_unit ::= 'ident'
+enum_variant_tuple ::= 'ident' tuple
+enum_variant_named ::= 'ident' '(' [ named_field ( ',' named_field )* [ ',' ] ] ')'
+

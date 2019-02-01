@@ -96,4 +96,4 @@ compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-//compileKotlin.dependsOn(generateLexer, generateParser)
+compileKotlin.dependsOn(generateLexer, generateParser)
