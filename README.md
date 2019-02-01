@@ -34,17 +34,6 @@ cd intellij-ron
 ./gradlew buildPlugin
 ```
 
-## Test
-
-* Run auto-tests
-```
-./gradlew test
-```
-* Run IDE instance with installed plugin
-```
-./gradlew runIde
-```
-
 ## License
 
 intellij-ron is dual-licensed under MIT/Apache-2.0.
