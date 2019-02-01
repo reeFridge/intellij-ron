@@ -1,0 +1,15 @@
+<idea-plugin>
+    <id>org.ronrs.ron</id>
+    <name>RON</name>
+    <vendor email="reefridgerator@gmail.com" url="https://github.com/reeFridge">reefridge</vendor>
+
+    <description><![CDATA[
+    RON support.
+    ]]></description>
+
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory implementation="org.ronrs.ron.lang.RONFileTypeFactory"/>
+    </extensions>
+</idea-plugin>
