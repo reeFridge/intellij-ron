@@ -12,5 +12,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="org.ronrs.ron.lang.RONFileTypeFactory"/>
         <lang.parserDefinition language="RON" implementationClass="org.ronrs.ron.lang.parser.RONParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="RON" implementationClass="org.ronrs.ron.editor.highlight.RONHighlighterFactory"/>
+        <highlightVisitor implementation="org.ronrs.ron.editor.highlight.RONHighlighterVisitor"/>
     </extensions>
 </idea-plugin>
