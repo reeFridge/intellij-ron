@@ -61,6 +61,10 @@ class RONHighlighter : SyntaxHighlighterBase() {
                 "RON.CONSTANT",
                 DefaultLanguageHighlighterColors.CONSTANT
         )
+        val STRUCT_NAME = TextAttributesKey.createTextAttributesKey(
+            "RON.STRUCT_NAME",
+            DefaultLanguageHighlighterColors.FUNCTION_DECLARATION
+        )
         val NUMBER = TextAttributesKey.createTextAttributesKey(
                 "RON.NUMBER",
                 DefaultLanguageHighlighterColors.NUMBER

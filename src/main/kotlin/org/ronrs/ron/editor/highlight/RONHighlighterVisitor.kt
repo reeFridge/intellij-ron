@@ -12,6 +12,45 @@ import org.ronrs.ron.lang.psi.*
 class RONHighlighterVisitor : RONVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
 
+    override fun visitTupleStruct(o: RONTupleStruct) {
+        if (o.ident != null) {
+            highlight(o.ident!!, RONHighlighter.STRUCT_NAME)
+        }
+
+        super.visitTupleStruct(o)
+    }
+
+    override fun visitNamedStruct(o: RONNamedStruct) {
+        if (o.ident != null) {
+            highlight(o.ident!!, RONHighlighter.STRUCT_NAME)
+        }
+
+        super.visitNamedStruct(o)
+    }
+
+    override fun visitUnitStruct(o: RONUnitStruct) {
+        if (o.ident != null) {
+            highlight(o.ident!!, RONHighlighter.STRUCT_NAME)
+        }
+
+        super.visitUnitStruct(o)
+    }
+
+    override fun visitEnumVariantNamed(o: RONEnumVariantNamed) {
+        highlight(o.ident, RONHighlighter.STRUCT_NAME)
+        super.visitEnumVariantNamed(o)
+    }
+
+    override fun visitEnumVariantUnit(o: RONEnumVariantUnit) {
+        highlight(o.ident, RONHighlighter.STRUCT_NAME)
+        super.visitEnumVariantUnit(o)
+    }
+
+    override fun visitEnumVariantTuple(o: RONEnumVariantTuple) {
+        highlight(o.ident, RONHighlighter.STRUCT_NAME)
+        super.visitEnumVariantTuple(o)
+    }
+
     override fun visitNamedField(o: RONNamedField) {
         highlight(o.ident, RONHighlighter.PROPERTY)
         super.visitNamedField(o)

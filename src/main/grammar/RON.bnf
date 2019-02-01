@@ -69,7 +69,7 @@ map_entry ::= value ':' value
 tuple ::= '(' [ value ( ',' value )* [ ',' ] ] ')'
 
 struct ::= tuple_struct | named_struct | unit_struct
-unit_struct ::= 'ident' | ( '(' ')' )
+unit_struct ::= ident | ( '(' ')' )
 tuple_struct ::= [ ident ] tuple
 named_struct ::= [ ident ] '(' [ named_field ( ',' named_field )* [ ',' ] ] ')'
 named_field ::= ident ':' value
